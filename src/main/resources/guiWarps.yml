@@ -1,0 +1,209 @@
+gui:
+  size: 45
+  name: "&8Liste des warps"
+
+block:
+  '0':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '1':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '2':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '3':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '4':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '5':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '6':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '7':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '8':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '9':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '10':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '11':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '12':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '13':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '14':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '15':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '16':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '17':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '18':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '19':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '20':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '21':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '22':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '23':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '24':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '25':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '26':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '27':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '28':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '29':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '30':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '31':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '32':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '33':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '34':
+    utility: warp
+    description:
+      - "&eClic Droit pour modifier l'icone"
+  '35':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '36':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '37':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '38':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '39':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '40':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '41':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '42':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '43':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '44':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }

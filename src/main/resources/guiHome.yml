@@ -1,0 +1,320 @@
+gui:
+  size: 54
+  name: "&8Homes de&6 {player}"
+
+block:
+  '0':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '1':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '2':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '3':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '4':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '5':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '6':
+    utility: barrier
+    material: MAGENTA_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '7':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '8':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '9':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '10':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '11':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '12':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '13':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '14':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '15':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '16':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '17':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '18':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '19':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '20':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '21':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '22':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '23':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '24':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '25':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '26':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '27':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '28':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '29':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '30':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '31':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '32':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '33':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '34':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '35':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '36':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '37':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '38':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '39':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '40':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '41':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '42':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '43':
+    utility: home
+    description:
+      - "&5Monde: &6{world}"
+      - "&5Serveur: &6{server}"
+      - "&eClic Droit pour modifier l'icone"
+  '44':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '45':
+    utility: previous
+    material: GLOWSTONE
+    title: "&5Page précédente"
+    description:
+      - "&eAppuyez dessus pour retourner à la page précédente"
+    replacement:
+      material: YELLOW_STAINED_GLASS_PANE
+      title: "&cBarrière"
+      description: { }
+  '46':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: {}
+  '47':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '48':
+    utility: sign
+    material: OAK_SIGN
+    title: "&eInformations"
+    description:
+      - "&5Nombres de homes :"
+      - "&6{use} &5/ &6{total}"
+      - ""
+      - "&5Homes de grade : &6{homesRank}"
+      - "&5Homes Bonus : &6{homesBonus}"
+  '49':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '50':
+    utility: filter
+    material: COMPARATOR
+    title: "&eCatégorie"
+    description:
+      - "&5Catégorie actuelle: &6{categorie}"
+      - "&eAppuyez dessus pour changer de catégorie."
+  '51':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '52':
+    utility: barrier
+    material: YELLOW_STAINED_GLASS_PANE
+    title: "&cBarrière"
+    description: { }
+  '53':
+    utility: next
+    material: GLOWSTONE
+    title: "&5Page suivante"
+    description:
+      - "&eAppuyez dessus pour aller sur la page suivante"
+    replacement:
+      material: YELLOW_STAINED_GLASS_PANE
+      title: "&cBarrière"
+      description: { }
