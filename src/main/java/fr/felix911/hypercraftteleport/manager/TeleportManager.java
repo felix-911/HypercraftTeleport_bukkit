@@ -28,12 +28,13 @@ public class TeleportManager {
         tpaHereDemand = new HashMap<>();
     }
 
-    public void requestTeleport(Player player, UUID playerHome, String name){
+    public void requestTeleport(Player player, UUID playerHome, String type, String name){
 
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("RequestTeleport");
         out.writeUTF(String.valueOf(player.getUniqueId()));
         out.writeUTF(playerHome.toString());
+        out.writeUTF(type);
         out.writeUTF(name);
         player.sendPluginMessage(pl, "hypercraft:teleport", out.toByteArray());
     }

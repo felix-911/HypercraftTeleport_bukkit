@@ -100,7 +100,8 @@ public class OnClickEvent implements Listener {
 
                     if (e.getClick().isLeftClick()){
                         String home = current.getItemMeta().getDisplayName().replace("§", "&");
-                        pl.getTeleportManager().requestTeleport(player,playerHomeUUID,home);
+
+                        pl.getTeleportManager().requestTeleport(player,playerHomeUUID, "home",home);
                         player.closeInventory();
                     } else if (e.getClick().isRightClick()){
                         if (player.getUniqueId().equals(playerHomeUUID)){
@@ -133,8 +134,8 @@ public class OnClickEvent implements Listener {
                     return;
                 }else {
                     if (e.getClick().isLeftClick()){
-                        String home = current.getItemMeta().getDisplayName().replace("§", "&");
-                        pl.getTeleportManager().requestTeleport(player,playerWarpUUID,home);
+                        String warp = current.getItemMeta().getDisplayName().replace("§", "&");
+                        pl.getTeleportManager().requestTeleport(player,playerWarpUUID,"warp",warp);
                         player.closeInventory();
                     } else {
                             return;

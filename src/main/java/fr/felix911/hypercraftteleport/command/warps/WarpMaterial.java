@@ -53,19 +53,16 @@ public class WarpMaterial extends BaseCommand {
                 if (barrierList.contains(m) || switchList.contains(m)){
                     String b = pl.getConfigurationManager().getLang().getNoUsable();
                     commandSender.sendMessage(b);
-                    return;
+                } else {
+                    ByteArrayDataOutput out = ByteStreams.newDataOutput();
+
+                    out.writeUTF("warpMaterial");
+                    out.writeUTF(String.valueOf(sender.getUniqueId()));
+                    out.writeUTF(warp);
+                    out.writeUTF(material);
+                    out.writeInt(customModelData);
+                    sender.sendPluginMessage(pl, "hypercraft:teleport", out.toByteArray());
                 }
-
-
-                ByteArrayDataOutput out = ByteStreams.newDataOutput();
-
-                out.writeUTF("warpMaterial");
-                out.writeUTF(String.valueOf(sender.getUniqueId()));
-                out.writeUTF(warp);
-                out.writeUTF(material);
-                out.writeInt(customModelData);
-
-                sender.sendPluginMessage(pl, "hypercraft:teleport", out.toByteArray());
 
             } else {
                 String b = pl.getConfigurationManager().getLang().getNoConsole();

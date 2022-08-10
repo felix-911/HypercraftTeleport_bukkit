@@ -8,6 +8,9 @@ import fr.felix911.hypercraftteleport.objects.WarpObject;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.util.*;
 
@@ -87,32 +90,47 @@ public class BungeeMsg implements PluginMessageListener {
                 pl.getHomesCache().getHomesCache().put(playeruuid, homelist);
             }
             if (subChannel.equalsIgnoreCase("warpListGui")) {
-                UUID senderuuid = UUID.fromString(in.readUTF());
-                String importWarp = in.readUTF();
-                importWarp = importWarp.replace("[", "");
-                importWarp = importWarp.replace("]", "");
-                String[] warps = importWarp.split(", ");
-                boolean edit = in.readBoolean();
+                String jsonString = in.readUTF();
+                JSONObject json = null;
+                try {
+                    json = (JSONObject) new JSONParser().parse(jsonString);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
-                Map<String, List<HomeObject>> filtedHomes = new HashMap<>();
+                UUID senderUUID = UUID.fromString(json.get("RequestedPlayerUUID").toString().replace("\"",""));
+                boolean edit = Boolean.parseBoolean(json.get("Editor").toString().replace("\"",""));
+                JSONObject jsonWarpList = (JSONObject) json.get("WarpList");
+
+                Set<String> warpList = jsonWarpList.keySet();
                 List<WarpObject> allWarps = new ArrayList<>();
 
-                for (String warp : warps) {
-                    String[] h = warp.split("¤");
-                    String name = h[0].replace("&", "§");
-                    String block = h[1];
-                    int customModelData = Integer.parseInt(h[2]);
 
-                    WarpObject warpObject = new WarpObject(name, "", "", 0, 0, 0, 0, 0, block, customModelData, false);
+                for (String warpName : warpList) {
 
-                    if (!allWarps.contains(warpObject)) {
-                        allWarps.add(warpObject);
+                    List<String> warpCache = pl.getWarpList();
+                    if (!warpCache.contains(warpName)){
+                        warpCache.add(warpName);
                     }
 
-                    pl.getGuiWarpsBase().open(senderuuid, allWarps, edit);
+                    JSONObject warp = (JSONObject) jsonWarpList.get(warpName);
 
+                    String server = warp.get("Server").toString().replace("\"", "");
+                    String world = warp.get("World").toString().replace("\"", "");
+                    double x = Double.parseDouble(warp.get("X").toString().replace("\"", ""));
+                    double y = Double.parseDouble(warp.get("Y").toString().replace("\"", ""));
+                    double z = Double.parseDouble(warp.get("Z").toString().replace("\"", ""));
+                    float pitch = Float.parseFloat(warp.get("Pitch").toString().replace("\"", ""));
+                    float yaw = Float.parseFloat(warp.get("Yaw").toString().replace("\"", ""));
+                    String block = warp.get("Block").toString().replace("\"", "");
+                    int customModelData = Integer.parseInt(warp.get("CustomModelData").toString().replace("\"", ""));
+                    boolean perm = Boolean.parseBoolean(warp.get("NeedPerm").toString().replace("\"", ""));
 
+                    WarpObject warpObject = new WarpObject(warpName, server, world, x, y, z, pitch, yaw, block, customModelData, perm);
+                    allWarps.add(warpObject);
                 }
+
+                   pl.getGuiWarpsBase().open(senderUUID, allWarps, edit);
             }
             if (subChannel.equalsIgnoreCase("tpaDemand")) {
                 UUID senderUUID = UUID.fromString(in.readUTF());

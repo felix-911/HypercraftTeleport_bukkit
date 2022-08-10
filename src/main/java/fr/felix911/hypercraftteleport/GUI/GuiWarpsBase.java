@@ -32,10 +32,11 @@ public class GuiWarpsBase {
 
         Map<Integer, SlotObject> slotList = pl.getConfigurationManager().getWarpsConfig().getSlotList();
 
-        String guiName = pl.getConfigurationManager().getHomesConfig().getName();
+        String guiName = pl.getConfigurationManager().getWarpsConfig().getName();
 
         Inventory inventory = Bukkit.createInventory(null, guiSize, guiName);
 
+        int intWarp = 0;
         for (int i : slotList.keySet()) {
             SlotObject slotObject = slotList.get(i);
             ItemStack iS = new ItemStack(Material.AIR);
@@ -56,26 +57,29 @@ public class GuiWarpsBase {
                     String block;
                     int customModelData;
 
-                    WarpObject warp = warps.get(i);
-                    name = warp.getName();
-                    block = warp.getBlock();
-                    customModelData = warp.getCustomModelData();
+                    if (!(intWarp >= warps.size())){
+                        WarpObject warp = warps.get(intWarp);
+                        intWarp++;
+                        name = warp.getName();
+                        block = warp.getBlock();
+                        customModelData = warp.getCustomModelData();
 
-                    material = Material.getMaterial(block);
-                    iS = new ItemStack(material);
-                    meta = iS.getItemMeta();
-                    meta.setDisplayName(name);
-                    if (customModelData != -1) {
-                        meta.setCustomModelData(customModelData);
-                    }
-                    if (edit) {
-                        for (String s : slotObject.getDescripction()) {
-                            s = s.replace("&", "§");
-                            description.add(s);
+                        material = Material.getMaterial(block);
+                        iS = new ItemStack(material);
+                        meta = iS.getItemMeta();
+                        meta.setDisplayName(name);
+                        if (customModelData != -1) {
+                            meta.setCustomModelData(customModelData);
                         }
+                        if (edit) {
+                            for (String s : slotObject.getDescripction()) {
+                                s = s.replace("&", "§");
+                                description.add(s);
+                            }
+                        }
+                        meta.setLore(description);
+                        iS.setItemMeta(meta);
                     }
-                    meta.setLore(description);
-                    iS.setItemMeta(meta);
                     break;
             }
             inventory.setItem(i, iS);

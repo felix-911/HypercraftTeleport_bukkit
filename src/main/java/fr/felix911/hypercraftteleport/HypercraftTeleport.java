@@ -12,7 +12,7 @@ import fr.felix911.hypercraftteleport.command.homes.SetHome;
 import fr.felix911.hypercraftteleport.command.spawn.SetSpawn;
 import fr.felix911.hypercraftteleport.command.tp.TpAccept;
 import fr.felix911.hypercraftteleport.command.tp.TpaRefuse;
-import fr.felix911.hypercraftteleport.command.warps.SetWarpCommand;
+import fr.felix911.hypercraftteleport.command.warps.SetWarp;
 import fr.felix911.hypercraftteleport.command.warps.WarpMaterial;
 import fr.felix911.hypercraftteleport.listener.*;
 import fr.felix911.hypercraftteleport.manager.CommandCompletionsManager;
@@ -29,6 +29,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.json.simple.JSONObject;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
@@ -47,6 +49,9 @@ public class HypercraftTeleport extends JavaPlugin {
     private static Economy economy = null;
 
     private HomesCache homesCache;
+    private List<String> warpList = new ArrayList<>();
+
+
 
 
     @Override
@@ -83,10 +88,9 @@ public class HypercraftTeleport extends JavaPlugin {
         commandManager.registerCommand(new TpAccept(this));
         commandManager.registerCommand(new TpaRefuse(this));
 
-
         commandManager.registerCommand(new SetSpawn(this));
 
-        commandManager.registerCommand(new SetWarpCommand(this));
+        commandManager.registerCommand(new SetWarp(this));
         commandManager.registerCommand(new WarpMaterial(this));
 
         setupEconomy();
@@ -172,24 +176,13 @@ public class HypercraftTeleport extends JavaPlugin {
         }
     }
 
-    public void sendWarp(Player sender, WarpObject warpObject) {
+    public void sendWarp(Player sender, JSONObject json) {
 
         try {
             ByteArrayDataOutput out = ByteStreams.newDataOutput();
 
             out.writeUTF("setwarp");
-            out.writeUTF(String.valueOf(sender.getUniqueId()));
-            out.writeUTF(String.valueOf(warpObject.getName()));
-            out.writeUTF(String.valueOf(warpObject.getServer()));
-            out.writeUTF(String.valueOf(warpObject.getWorld()));
-            out.writeDouble(warpObject.getX());
-            out.writeDouble(warpObject.getY());
-            out.writeDouble(warpObject.getZ());
-            out.writeFloat(warpObject.getPitch());
-            out.writeFloat(warpObject.getYaw());
-            out.writeUTF(warpObject.getBlock());
-            out.writeInt(warpObject.getCustomModelData());
-            out.writeBoolean(warpObject.isNeedPerm());
+            out.writeUTF(json.toJSONString());
 
             sender.sendPluginMessage(this, "hypercraft:teleport", out.toByteArray());
         } catch (Exception e) {
@@ -197,20 +190,13 @@ public class HypercraftTeleport extends JavaPlugin {
         }
     }
 
-    public void sendSpawn(Player sender, String server, String world, double x, double y, double z, float pitch, float yaw) {
+    public void sendSpawn(Player sender, JSONObject json) {
 
         try {
             ByteArrayDataOutput out = ByteStreams.newDataOutput();
 
             out.writeUTF("setspawn");
-            out.writeUTF(String.valueOf(sender.getUniqueId()));
-            out.writeUTF(server);
-            out.writeUTF(world);
-            out.writeDouble(x);
-            out.writeDouble(y);
-            out.writeDouble(z);
-            out.writeFloat(pitch);
-            out.writeFloat(yaw);
+            out.writeUTF(json.toJSONString());
 
             sender.sendPluginMessage(this, "hypercraft:teleport", out.toByteArray());
         } catch (Exception e) {
@@ -219,12 +205,12 @@ public class HypercraftTeleport extends JavaPlugin {
 
     }
 
-    public static JSONObject serializeHomeToJson(Player sender, UUID UUID, HomeObject home) {
+    public static JSONObject serializeHomeToJson(Player sender, UUID uuid, HomeObject home) {
 
         JSONObject json = new JSONObject();
 
-        json.put("RequestedPlayerUUID", sender.getUniqueId());
-        json.put("PlayerHomeUUID", UUID);
+        json.put("RequestedPlayerUUID", sender.getUniqueId().toString());
+        json.put("PlayerHomeUUID", uuid.toString());
 
         JSONObject jSonHome = new JSONObject();
 
@@ -239,9 +225,47 @@ public class HypercraftTeleport extends JavaPlugin {
         jSonHome.put("Block", home.getBlock());
         jSonHome.put("CustomModelData", home.getCustomModelData());
 
-        json.put("home",jSonHome);
+        json.put("Home",jSonHome);
         return json;
     }
+
+    public static JSONObject serializeWarpToJson(Player sender, WarpObject warp) {
+        JSONObject json = new JSONObject();
+        json.put("RequestedPlayerUUID", sender.getUniqueId().toString());
+        JSONObject jsonWarp = new JSONObject();
+        jsonWarp.put("Name", warp.getName());
+        jsonWarp.put("Server", warp.getServer());
+        jsonWarp.put("World", warp.getWorld());
+        jsonWarp.put("X", warp.getX());
+        jsonWarp.put("Y", warp.getY());
+        jsonWarp.put("Z", warp.getZ());
+        jsonWarp.put("Pitch", warp.getPitch());
+        jsonWarp.put("Yaw", warp.getYaw());
+        jsonWarp.put("Block", warp.getBlock());
+        jsonWarp.put("CustomModelData", warp.getCustomModelData());
+        jsonWarp.put("NeedPerm", warp.isNeedPerm());
+
+        json.put("Warp",jsonWarp);
+        return json;
+    }
+
+    public static JSONObject serializeSpawnToJson(Player sender, SpawnObject spawn) {
+        JSONObject json = new JSONObject();
+        json.put("RequestedPlayerUUID", sender.getUniqueId().toString());
+        JSONObject jsonWarp = new JSONObject();
+        jsonWarp.put("Server", spawn.getServer());
+        jsonWarp.put("World", spawn.getWorld());
+        jsonWarp.put("X", spawn.getX());
+        jsonWarp.put("Y", spawn.getY());
+        jsonWarp.put("Z", spawn.getZ());
+        jsonWarp.put("Pitch", spawn.getPitch());
+        jsonWarp.put("Yaw", spawn.getYaw());
+
+        json.put("Spawn",jsonWarp);
+        return json;
+    }
+
+
     //Getter
 
     public CommandManager getCommandManager() {
@@ -280,5 +304,9 @@ public class HypercraftTeleport extends JavaPlugin {
 
     public void setInfo(int info) {
         this.info = info;
+    }
+
+    public List<String> getWarpList() {
+        return warpList;
     }
 }
