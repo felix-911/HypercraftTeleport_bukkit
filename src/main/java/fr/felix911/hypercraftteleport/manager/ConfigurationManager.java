@@ -92,7 +92,6 @@ public class ConfigurationManager {
 
     }
 
-
     public void saveCache(UUID uuid, String location) {
 
         File racine = plugin.getDataFolder();

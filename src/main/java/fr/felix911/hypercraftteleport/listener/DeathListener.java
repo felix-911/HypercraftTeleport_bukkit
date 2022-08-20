@@ -2,6 +2,7 @@ package fr.felix911.hypercraftteleport.listener;
 
 import fr.felix911.apibukkit.ApiBukkit;
 import fr.felix911.hypercraftteleport.HypercraftTeleport;
+import fr.felix911.hypercraftteleport.objects.LocationObject;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -30,8 +31,9 @@ public class DeathListener implements Listener {
         float pitch = Float.parseFloat(df.format(player.getLocation().getPitch()).replace(",","."));
         float yaw = Float.parseFloat(df.format(player.getLocation().getYaw()).replace(",","."));
 
-        String location = server + "¤" + world + "¤" + x + "¤" + y + "¤" + z + "¤" + pitch + "¤" + yaw;
-        pl.getTeleportManager().sendDeathLocation(player.getUniqueId(), location);
+        LocationObject location = new LocationObject(server,world,x,y,z,pitch,yaw);
+        String json = HypercraftTeleport.locationToJson(location);
+        pl.getTeleportManager().sendDeathLocation(player.getUniqueId(), json);
     }
 
 }

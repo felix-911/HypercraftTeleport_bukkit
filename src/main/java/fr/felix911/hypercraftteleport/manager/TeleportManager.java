@@ -6,6 +6,7 @@ import com.google.common.io.ByteStreams;
 import fr.felix911.apibukkit.ApiBukkit;
 import fr.felix911.hypercraftteleport.HypercraftTeleport;
 import fr.felix911.hypercraftteleport.objects.BoutonsObject;
+import fr.felix911.hypercraftteleport.objects.LocationObject;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -54,21 +55,23 @@ public class TeleportManager {
         float pitch = Float.parseFloat(df.format(l.getPitch()).replace(",","."));
         float yaw = Float.parseFloat(df.format(l.getYaw()).replace(",","."));
 
-        String location = server + "¤" + world + "¤" + x + "¤" + y + "¤" + z + "¤" + pitch + "¤" + yaw;
+        LocationObject location = new LocationObject(server,world,x,y,z,pitch,yaw);
+        String json = HypercraftTeleport.locationToJson(location);
 
-        if (pl.getServer().getOnlinePlayers().size() == 1){
-            pl.getConfigurationManager().saveCache(e.getPlayer().getUniqueId(), location);
+        if (json != null){
+            if (pl.getServer().getOnlinePlayers().size() == 1){
+                pl.getConfigurationManager().saveCache(e.getPlayer().getUniqueId(), json);
 
-        } else {
-            ByteArrayDataOutput out = ByteStreams.newDataOutput();
+            } else {
+                ByteArrayDataOutput out = ByteStreams.newDataOutput();
 
-            out.writeUTF("LogoutLocation");
-            out.writeUTF(String.valueOf(e.getPlayer().getUniqueId()));
-            out.writeUTF(location);
-            Player player = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
-            player.sendPluginMessage(pl, "hypercraft:teleport", out.toByteArray());
+                out.writeUTF("LogoutLocation");
+                out.writeUTF(String.valueOf(e.getPlayer().getUniqueId()));
+                out.writeUTF(json);
+                Player player = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
+                player.sendPluginMessage(pl, "hypercraft:teleport", out.toByteArray());
+            }
         }
-
     }
 
     public void sendLogoutLocation(UUID uuid, String location) {
@@ -127,9 +130,11 @@ public class TeleportManager {
 
 
         pl.getServer().getScheduler().runTaskLaterAsynchronously(pl, () -> {
-            tpaDemand.remove(playerUUID);
-            String expired = pl.getConfigurationManager().getLang().getRequestTpaExpired();
-            player.sendMessage(expired);
+            if (tpaDemand.containsKey(playerUUID)) {
+                tpaDemand.remove(playerUUID);
+                String expired = pl.getConfigurationManager().getLang().getRequestTpaExpired();
+                player.sendMessage(expired);
+            }
         },1200);
 
     }
@@ -156,13 +161,13 @@ public class TeleportManager {
         buttons.addExtra(new BoutonsObject(pl, "Deny", "/tparefuse").create());
         player.sendMessage(buttons);
 
-
-
         pl.getServer().getScheduler().runTaskLaterAsynchronously(pl, () -> {
-            tpaHereDemand.remove(playerUUID);
-            String expired = pl.getConfigurationManager().getLang().getRequestTpaExpired();
-            player.sendMessage(expired);
-        },300000);
+            if (tpaHereDemand.containsKey(playerUUID)){
+                tpaHereDemand.remove(playerUUID);
+                String expired = pl.getConfigurationManager().getLang().getRequestTpaExpired();
+                player.sendMessage(expired);
+            }
+        },1200);
     }
 
     public Map<UUID, UUID> getTpaDemand() {

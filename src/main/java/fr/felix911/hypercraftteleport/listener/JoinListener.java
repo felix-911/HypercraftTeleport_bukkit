@@ -24,7 +24,7 @@ public class JoinListener implements Listener {
         Map<UUID, String> cacheLogout = pl.getConfigurationManager().checkCache();
         if (!cacheLogout.isEmpty()){
             for (UUID uuid : cacheLogout.keySet()){
-                pl.getTeleportManager().sendLogoutLocation(uuid,cacheLogout.get(uuid));
+                pl.getTeleportManager().sendLogoutLocation(e.getPlayer().getUniqueId(),cacheLogout.get(uuid));
                 pl.getConfigurationManager().deleteCache(uuid);
             }
         }

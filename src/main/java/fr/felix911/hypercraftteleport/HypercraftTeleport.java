@@ -265,6 +265,21 @@ public class HypercraftTeleport extends JavaPlugin {
         return json;
     }
 
+    public static String locationToJson(LocationObject location){
+        String json;
+
+        JSONObject locationJson = new JSONObject();
+        locationJson.put("Server", location.getServer());
+        locationJson.put("World", location.getWorld());
+        locationJson.put("X", location.getX());
+        locationJson.put("Y", location.getY());
+        locationJson.put("Z", location.getZ());
+        locationJson.put("Pitch", location.getPitch());
+        locationJson.put("Yaw", location.getYaw());
+
+        json = locationJson.toJSONString();
+        return json;
+    }
 
     //Getter
 
